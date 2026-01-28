@@ -1,0 +1,413 @@
+// Claims Status styles imported from vets-website
+// Source: vets-website/src/applications/claims-status/sass/claims-status.scss
+
+@import "~@department-of-veterans-affairs/css-library/dist/tokens/scss/variables";
+@import "~@department-of-veterans-affairs/css-library/dist/stylesheets/mixins";
+@import "~@department-of-veterans-affairs/css-library/dist/stylesheets/modules/m-process-list";
+
+.claim-list {
+  margin-bottom: 2em;
+}
+
+#claims-combined {
+  margin: 1em 0;
+}
+
+.claim-file-border,
+.help-heading {
+  border-bottom: 3px solid var(--vads-color-primary);
+  margin: 10px 0 10px;
+  padding-bottom: 9px;
+  font-size: 1.35em;
+  line-height: 1.2;
+  font-weight: bold;
+  max-width: 14.0625rem;
+}
+
+.help-sidebar {
+  p {
+    margin: 0 0 4px;
+  }
+}
+
+.submit-additional-evidence {
+  margin-top: 1.5em;
+}
+
+.additional-evidence-desc {
+  margin: 0;
+}
+
+#default-page {
+  h2 {
+    margin-top: 32px;
+    margin-bottom: 16px;
+  }
+  p {
+    margin: 16px 0;
+  }
+}
+
+.reviewed-file {
+  color: var(--vads-color-success-dark);
+}
+
+.tracked-item-due {
+  > .due-file {
+    color: var(--vads-color-base-darker);
+    font-size: 0.9em;
+  }
+
+  > .past-due {
+    color: var(--vads-color-secondary-darkest);
+    font-size: 0.9em;
+  }
+}
+
+.due-date-header {
+  > .due-file {
+    color: var(--vads-color-base);
+  }
+
+  > .past-due {
+    color: var(--vads-color-secondary-darkest);
+  }
+}
+
+.claim-list-item-container {
+  background-color: var(--vads-color-base-lightest);
+  padding: 2em 1em 1em;
+  margin-bottom: 1em;
+  position: relative;
+}
+
+.claim-list-item-text {
+  margin: 0;
+}
+
+.claim-list-item {
+  margin-bottom: 1em;
+
+  .card-status {
+    margin: 0 0 1em;
+
+    p {
+      margin-top: 0.25em;
+      margin-bottom: 0;
+    }
+  }
+}
+
+.claim-list-item-header {
+  margin-top: 0;
+
+  span {
+    display: block;
+    width: fit-content;
+    font-size: 1rem;
+    font-family: $font-family-sans;
+    font-weight: normal;
+    line-height: 1.5;
+  }
+
+  .usa-label {
+    margin-bottom: 1em;
+  }
+}
+
+.claims-status {
+  padding: 1em 0 3em;
+}
+
+.claims-container {
+  &:not(:first-child) {
+    padding: 1em 0 3em;
+  }
+
+  &:first-child {
+    padding-bottom: 3em;
+  }
+
+  .claims-container-title {
+    margin-bottom: 0;
+    & + p {
+      margin-top: 0;
+    }
+  }
+}
+
+.file-requirements {
+  margin-bottom: 1.5em;
+}
+
+.file-requirement-header {
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.file-requirement-text {
+  margin: 0;
+  &:last-child {
+    margin-bottom: 1em;
+  }
+}
+
+.document-item-container {
+  background-color: var(--vads-color-base-lightest);
+  padding: 1em;
+  margin-bottom: 1.5em;
+  &:focus {
+    outline: none;
+  }
+}
+
+.document-title-text-container {
+  padding-right: 1em;
+  word-break: break-all;
+}
+
+.document-title-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.document-title {
+  font-size: 1.35em;
+  line-height: 1.5;
+  font-weight: bold;
+  padding: 0;
+}
+
+.claims-header {
+  margin: 0;
+  display: inline-block;
+
+  & > span {
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 30px;
+    display: block;
+  }
+}
+
+.claims-status-content {
+  margin: 0 0;
+}
+
+h1:focus {
+  outline: none;
+}
+
+.claim-tab-content {
+  padding-top: 2em;
+}
+
+.claim-title {
+  margin: 0;
+  display: inline-block;
+
+  & > span {
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 30px;
+    display: block;
+  }
+}
+
+// Claim status page
+.claim-contentions {
+  margin-top: 0.5em;
+  margin-bottom: 2em;
+}
+
+.claim-contentions-header {
+  display: inline-block;
+  margin-right: 6px;
+  padding-bottom: 0;
+}
+
+.usa-alert {
+  // Remove icons from standard USWDS alert styles
+  background-image: none;
+  padding-left: 1em;
+}
+
+.claims-evidence-list,
+.failed-files-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.claims-evidence {
+  border-bottom: 1px solid var(--vads-color-base-light);
+  padding: 1em 0;
+  display: flex;
+  flex-direction: column;
+
+  @include media($medium-screen) {
+    flex-direction: row;
+  }
+
+  &:last-child {
+    border: none;
+    padding-bottom: 0;
+  }
+}
+
+.claims-evidence-date {
+  font-weight: bold;
+  padding-right: 10px;
+
+  @include media($medium-screen) {
+    width: 25%;
+    flex-shrink: 0;
+  }
+}
+
+// Claim detail page
+.claim-details {
+  margin-top: 0;
+}
+
+.claim-detail-list {
+  margin: 0;
+  padding: 0;
+}
+
+.claim-detail-list-item {
+  display: block;
+}
+
+.claim-detail-label {
+  font-size: 0.9em;
+  line-height: 1.5;
+  font-weight: bold;
+
+  h3 {
+    margin: 0;
+  }
+}
+
+.submitted-files-list {
+  margin-bottom: 2em;
+}
+
+.submitted-file-list-item {
+  margin: 0.5em 0;
+  border-bottom: 1px solid var(--vads-color-base-light);
+  &:last-child {
+    border: none;
+  }
+}
+
+.submission-status {
+  display: inline-block;
+  padding: 0;
+  padding-bottom: 8px;
+  font-weight: bold;
+  font-size: 0.9em;
+  line-height: 1.5;
+}
+
+.submission-icon {
+  margin-right: 6px;
+}
+
+.docs-filed-text {
+  font-weight: bold;
+}
+
+.docs-filed-icon {
+  margin-right: 6px;
+  color: var(--vads-color-success-dark);
+}
+
+.submission-description {
+  display: inline-block;
+  padding: 0 0 0.5em 0;
+}
+
+.submission-file-type {
+  color: var(--vads-color-primary-darker);
+  display: block;
+  font-size: 1.15em;
+  line-height: 1.5;
+  font-weight: bold;
+  padding-bottom: 0;
+  &.additional-evidence {
+    padding-bottom: 0.5em;
+  }
+}
+
+.submission-date {
+  display: inline-block;
+  margin-left: 0.5em;
+}
+
+.claims-requested-files-container {
+  margin-bottom: 1.5em;
+}
+
+.primary-alert .due-date-header {
+  padding-bottom: 16px;
+}
+
+.link-action-container {
+  padding-top: 16px;
+  margin-left: -2px;
+}
+
+.alert-description {
+  padding-bottom: 0;
+  margin: 0;
+}
+
+.file-request-list-item {
+  margin-top: 1.5em;
+  &:last-child {
+    border: none;
+  }
+}
+
+.file-request-title {
+  font-size: 1.15em;
+  line-height: 1.5;
+  padding-bottom: 0;
+  margin-top: 0;
+}
+
+.file-request-list-item-optional {
+  background-color: var(--vads-color-base-lightest);
+}
+
+.past-due-icon {
+  margin-right: 3px;
+  @include media($medium-screen) {
+    margin-right: 6px;
+  }
+}
+
+.claim-item-label {
+  font-weight: bold;
+}
+
+// React Router Link css that allows us to
+// have the same styling as va-link active prop
+.active-va-link {
+  display: block;
+  font-weight: bold;
+  margin-top: 16px;
+
+  &:focus va-icon,
+  &:hover va-icon {
+    margin-left: 0.75rem;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
+    transition-property: margin;
+  }
+}
+
+.bullet-disc {
+  list-style-type: disc;
+}

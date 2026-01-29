@@ -32,7 +32,7 @@ export default function Home() {
   return (
     <>
       <TwoColumnLayout
-        leftHeader="Evidence Request Editor"
+        leftHeader="Evidence Request"
         rightHeader="Preview"
         left={
           <>

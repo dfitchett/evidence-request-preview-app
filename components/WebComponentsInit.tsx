@@ -8,8 +8,8 @@ import { useEffect } from 'react';
  */
 export function WebComponentsInit() {
   useEffect(() => {
-    // Dynamically import and initialize web components
-    import('@department-of-veterans-affairs/component-library')
+    // Dynamically import and initialize web components from the loader
+    import('@department-of-veterans-affairs/web-components/loader')
       .then(({ defineCustomElements }) => {
         defineCustomElements();
       })

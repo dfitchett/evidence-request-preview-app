@@ -6,31 +6,21 @@
 }
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Use VA Design System color tokens */
+  --background: var(--vads-color-white, #ffffff);
+  --foreground: var(--vads-color-base, #1b1b1b);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-source-sans);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #ffffff;
-    --foreground: #1b1b1b;
-  }
+  /* Use VA Design System font family */
+  --font-sans: var(--vads-font-family-sans, 'Source Sans Pro', 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-source-sans), 'Source Sans Pro', Roboto, Arial, sans-serif;
-}
-
-p {
-  font-size: 16.96px;
 }
 
 #form-panel p {
@@ -41,7 +31,6 @@ p {
 label {
   margin: 0;
   padding: 0;
-  font-size: 16.96px;
 }
 
 /* Bullet list styling */
@@ -53,24 +42,24 @@ label {
   font-size: 16.96px;
 }
 
-/* VA Link styles */
+/* VA Link styles - using VA Design System color tokens */
 .va-link {
-  color: #005ea2;
+  color: var(--vads-color-primary, #005ea2);
   text-decoration: underline;
 }
 
 .va-link:hover {
-  color: #1a4480;
+  color: var(--vads-color-primary-dark, #1a4480);
 }
 
 .va-link--active {
-  color: #005ea2;
+  color: var(--vads-color-primary, #005ea2);
   text-decoration: underline;
 }
 
-/* VA Telephone styles */
+/* VA Telephone styles - using VA Design System color tokens */
 .va-telephone {
-  color: #005ea2;
+  color: var(--vads-color-primary, #005ea2);
   text-decoration: none;
 }
 
@@ -78,39 +67,39 @@ label {
   text-decoration: underline;
 }
 
-/* Mock Upload Form styles */
+/* Mock Upload Form styles - using VA Design System color tokens */
 .mock-upload-form {
   margin-top: 2rem;
 }
 
 .mock-upload-form__placeholder {
-  border: 2px dashed #565c65;
+  border: 2px dashed var(--vads-color-base-dark, #565c65);
   border-radius: 8px;
   padding: 2rem;
   text-align: center;
-  background-color: #f0f0f0;
+  background-color: var(--vads-color-base-lightest, #f0f0f0);
 }
 
 .mock-upload-form__icon {
-  color: #71767a;
+  color: var(--vads-color-base, #71767a);
   margin-bottom: 1rem;
 }
 
 .mock-upload-form__text {
   margin: 0 0 0.5rem 0;
-  color: #1b1b1b;
+  color: var(--vads-color-base-darkest, #1b1b1b);
 }
 
 .mock-upload-form__subtext {
   margin: 0;
   font-size: 0.875rem;
-  color: #71767a;
+  color: var(--vads-color-base, #71767a);
 }
 
-/* Preview panel container */
+/* Preview panel container - using VA Design System tokens */
 .preview-panel {
-  background-color: #ffffff;
-  border: 1px solid #dfe1e2;
+  background-color: var(--vads-color-white, #ffffff);
+  border: 1px solid var(--vads-color-base-lighter, #dfe1e2);
   border-radius: 8px;
   padding: 1.5rem;
 }
@@ -121,7 +110,7 @@ label {
   align-items: center;
   margin-bottom: 1rem;
   padding-bottom: 1rem;
-  border-bottom: 1px solid #dfe1e2;
+  border-bottom: 1px solid var(--vads-color-base-lighter, #dfe1e2);
 }
 
 .preview-panel-title {
@@ -130,9 +119,9 @@ label {
   margin: 0;
 }
 
-/* VA Need Help styles (simulating va-need-help web component) */
+/* VA Need Help styles - using VA Design System tokens */
 .va-need-help {
-  background-color: #f0f0f0;
+  background-color: var(--vads-color-base-lightest, #f0f0f0);
   padding: 1.5rem;
   border-radius: 4px;
   margin-top: 2rem;
@@ -142,7 +131,7 @@ label {
   font-size: 1.25rem;
   font-weight: 700;
   margin: 0 0 1rem 0;
-  color: #1b1b1b;
+  color: var(--vads-color-base-darkest, #1b1b1b);
 }
 
 .va-need-help p {
@@ -154,7 +143,7 @@ label {
   margin-bottom: 0;
 }
 
-/* VA Alert styles (simulating va-alert web component) */
+/* VA Alert styles - using VA Design System tokens */
 .va-alert {
   padding: 1.5rem;
   border-left: 4px solid;
@@ -162,23 +151,23 @@ label {
 }
 
 .va-alert--warning {
-  background-color: #faf3d1;
-  border-color: #ffbe2e;
+  background-color: var(--vads-color-warning-lighter, #faf3d1);
+  border-color: var(--vads-color-warning, #ffbe2e);
 }
 
 .va-alert--error {
-  background-color: #f8dfe2;
-  border-color: #d63e04;
+  background-color: var(--vads-color-error-lighter, #f8dfe2);
+  border-color: var(--vads-color-error, #d63e04);
 }
 
 .va-alert--info {
-  background-color: #e1f3f8;
-  border-color: #00bde3;
+  background-color: var(--vads-color-info-lighter, #e1f3f8);
+  border-color: var(--vads-color-info, #00bde3);
 }
 
 .va-alert--success {
-  background-color: #ecf3ec;
-  border-color: #00a91c;
+  background-color: var(--vads-color-success-lighter, #ecf3ec);
+  border-color: var(--vads-color-success, #00a91c);
 }
 
 .va-alert__body {
@@ -229,7 +218,7 @@ label {
 
 .two-column-panel-header {
   flex-shrink: 0;
-  border-bottom: 1px solid #dfe1e2;
+  border-bottom: 1px solid var(--vads-color-base-lighter, #dfe1e2);
 }
 
 .two-column-panel-content {
@@ -256,7 +245,7 @@ label {
   .two-column-panel--left {
     flex: 1 1 33.333%;
     min-width: 400px;
-    border-right: 1px solid #dfe1e2;
+    border-right: 1px solid var(--vads-color-base-lighter, #dfe1e2);
   }
 
   .two-column-panel--right {

@@ -21,10 +21,10 @@ export function AcceptanceCriteriaSection({
       <VaTextarea
         name="acceptanceCriteria"
         value={formData.acceptanceCriteria}
-        onInput={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
-          onChange('acceptanceCriteria', e.target.value)
-        }
-        rows={10}
+        onInput={(e) => {
+          const target = e.target as HTMLTextAreaElement;
+          onChange('acceptanceCriteria', target.value);
+        }}
       />
     </FormSection>
   );

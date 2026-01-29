@@ -225,6 +225,11 @@ label {
   padding: 1rem;
 }
 
+/* Resizer Handle */
+.resizer-handle {
+  display: none;
+}
+
 /* Medium screen and up: two columns with independent scrolling */
 @media (min-width: 768px) {
   .two-column-content {
@@ -243,17 +248,77 @@ label {
   }
 
   .two-column-panel--left {
-    flex: 1 1 33.333%;
-    min-width: 400px;
-    border-right: 1px solid var(--vads-color-base-lighter, #dfe1e2);
+    min-width: 250px;
+    border-right: none;
   }
 
   .two-column-panel--right {
-    flex: 2 1 66.667%;
+    min-width: 250px;
   }
 
   .two-column-panel-content {
     flex: 1 1 0;
     overflow-y: auto;
+  }
+
+  /* Resizer Handle - visible on medium screens and up */
+  .resizer-handle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 8px;
+    flex-shrink: 0;
+    cursor: col-resize;
+    background-color: var(--vads-color-base-lighter, #dfe1e2);
+    transition: background-color 0.15s ease;
+    position: relative;
+  }
+
+  .resizer-handle:hover,
+  .resizer-handle:focus {
+    background-color: var(--vads-color-base-light, #a9aeb1);
+  }
+
+  .resizer-handle:focus {
+    outline: 2px solid var(--vads-color-primary, #005ea2);
+    outline-offset: -2px;
+  }
+
+  .resizer-handle--active {
+    background-color: var(--vads-color-primary, #005ea2);
+  }
+
+  .resizer-handle__grip {
+    width: 4px;
+    height: 40px;
+    background-image: repeating-linear-gradient(
+      0deg,
+      var(--vads-color-base, #71767a),
+      var(--vads-color-base, #71767a) 2px,
+      transparent 2px,
+      transparent 6px
+    );
+    border-radius: 2px;
+  }
+
+  .resizer-handle:hover .resizer-handle__grip,
+  .resizer-handle:focus .resizer-handle__grip {
+    background-image: repeating-linear-gradient(
+      0deg,
+      var(--vads-color-base-darker, #3d4551),
+      var(--vads-color-base-darker, #3d4551) 2px,
+      transparent 2px,
+      transparent 6px
+    );
+  }
+
+  .resizer-handle--active .resizer-handle__grip {
+    background-image: repeating-linear-gradient(
+      0deg,
+      var(--vads-color-white, #ffffff),
+      var(--vads-color-white, #ffffff) 2px,
+      transparent 2px,
+      transparent 6px
+    );
   }
 }

@@ -20,6 +20,7 @@
 import React, { useMemo } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import { subDays, format } from 'date-fns';
 import { EvidenceRequestFormData, PreviewSettings } from '@/lib/types';
 
 // Import the evidenceDictionary so we can inject our preview content
@@ -69,13 +70,18 @@ function transformToTrackedItem(
   formData: EvidenceRequestFormData,
   settings: PreviewSettings
 ) {
+  // When simulatePastDue is true, set suspenseDate to yesterday so the alert shows
+  const suspenseDate = settings.simulatePastDue
+    ? format(subDays(new Date(), 1), 'yyyy-MM-dd')
+    : settings.suspenseDate;
+
   return {
     id: 1,
     displayName: formData.displayName || 'preview_evidence_request',
     friendlyName: formData.friendlyName || null,
     description: formData.shortDescription || formData.activityDescription || '',
     status: settings.viewMode,
-    suspenseDate: settings.suspenseDate,
+    suspenseDate,
     requestedDate: settings.requestedDate,
     canUploadFile: formData.canUploadFile,
     // Used by getDisplayFriendlyName() helper

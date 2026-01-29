@@ -39,7 +39,7 @@ function formatBoolean(field: string, value: boolean): string {
 function formatAcceptanceCriteria(
   criteria: EvidenceRequestFormData['acceptanceCriteria']
 ): string {
-  return criteria.map((item) => `- [${item.checked ? 'x' : ' '}] ${item.label}`).join('\n');
+  return criteria || '_No response_';
 }
 
 /**

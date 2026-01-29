@@ -3,7 +3,6 @@
 import { EvidenceRequestFormData } from '@/lib/types';
 import { INITIAL_FORM_DATA } from '@/lib/constants';
 import { BasicInfoSection } from './BasicInfoSection';
-import { DescriptionSection } from './DescriptionSection';
 import { FlagsSection } from './FlagsSection';
 import { ContentSection } from './ContentSection';
 import { MetadataSection } from './MetadataSection';
@@ -35,12 +34,11 @@ export function EvidenceRequestForm({
   };
 
   return (
-    <div className="evidence-request-form space-y-2">
+    <div className="evidence-request-form mt-4 space-y-4" id="form-panel">
 
       <BasicInfoSection formData={formData} onChange={onChange} />
-      <DescriptionSection formData={formData} onChange={onChange} />
-      <FlagsSection formData={formData} onChange={onChange} />
       <ContentSection formData={formData} onChange={onChange} />
+      <FlagsSection formData={formData} onChange={onChange} />
       <MetadataSection formData={formData} onChange={onChange} />
       <AcceptanceCriteriaSection formData={formData} onChange={onChange} />
 

@@ -27,13 +27,7 @@ export interface EvidenceRequestFormData {
   linksResources: string;
 
   // Acceptance Criteria
-  acceptanceCriteria: AcceptanceCriteriaItem[];
-}
-
-export interface AcceptanceCriteriaItem {
-  id: string;
-  label: string;
-  checked: boolean;
+  acceptanceCriteria: string;
 }
 
 export interface PreviewSettings {

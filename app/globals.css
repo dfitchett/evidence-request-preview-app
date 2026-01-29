@@ -33,6 +33,17 @@ p {
   font-size: 16.96px;
 }
 
+#form-panel p {
+  margin: 0;
+  padding: 0;
+}
+
+label {
+  margin: 0;
+  padding: 0;
+  font-size: 16.96px;
+}
+
 /* Bullet list styling */
 .bullet-disc {
   list-style-type: disc;
@@ -94,13 +105,6 @@ p {
   margin: 0;
   font-size: 0.875rem;
   color: #71767a;
-}
-
-/* Optional upload section */
-.optional-upload {
-  background-color: #f0f0f0;
-  padding: 1rem;
-  border-radius: 4px;
 }
 
 /* Preview panel container */
@@ -229,7 +233,7 @@ p {
 }
 
 .two-column-panel-content {
-  padding: 1rem 0;
+  padding: 1rem;
 }
 
 /* Medium screen and up: two columns with independent scrolling */

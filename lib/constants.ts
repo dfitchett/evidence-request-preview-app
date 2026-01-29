@@ -1,40 +1,13 @@
-import { EvidenceRequestFormData, AcceptanceCriteriaItem } from './types';
+import { EvidenceRequestFormData } from './types';
 
-export const DEFAULT_ACCEPTANCE_CRITERIA: AcceptanceCriteriaItem[] = [
-  {
-    id: 'content-added',
-    label:
-      'Content is added to lib/lighthouse/benefits_claims/tracked_item_content/override_content.json',
-    checked: false,
-  },
-  {
-    id: 'display-name-alias',
-    label: 'the displayName is added to the supportedAliases array',
-    checked: false,
-  },
-  {
-    id: 'json-validates',
-    label: 'JSON validates against the schema',
-    checked: false,
-  },
-  {
-    id: 'staging-tested',
-    label: 'Content tested in staging environment',
-    checked: false,
-  },
-  {
-    id: 'visual-review',
-    label: 'Visual review confirms content renders correctly',
-    checked: false,
-  },
-  {
-    id: 'a11y-review',
-    label: 'Accessibility review completed (if applicable)',
-    checked: false,
-  },
-  { id: 'unit-tests', label: 'Unit tests added/updated', checked: false },
-  { id: 'e2e-tests', label: 'End-to-end tests added/updated', checked: false },
-];
+export const DEFAULT_ACCEPTANCE_CRITERIA = `- [ ] Content is added to lib/lighthouse/benefits_claims/tracked_item_content/override_content.json
+- [ ] The displayName is added to the supportAliases array
+- [ ] JSON validates against the schema
+- [ ] Content tested in staging environment
+- [ ] Visual review confirms content renders correctly
+- [ ] Accessibility review completed (if applicable)
+- [ ] Unit tests added/updated
+- [ ] End-to-end tests added/updated`;
 
 export const INITIAL_FORM_DATA: EvidenceRequestFormData = {
   displayName: '21-4142/21-4142a',

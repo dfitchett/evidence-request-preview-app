@@ -32,7 +32,7 @@ export function BasicInfoSection({ formData, onChange }: BasicInfoSectionProps) 
           placeholder="e.g., request_for_medical_records"
           required
         />
-        <p className="mt-1 text-xs text-gray-500">
+        <p className="text-xs text-gray-500">
           This is the unique identifier used in the API
         </p>
       </div>

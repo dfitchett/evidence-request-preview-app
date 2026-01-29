@@ -33,44 +33,45 @@ export default function Home() {
     <>
       <TwoColumnLayout
         leftHeader="Evidence Request Editor"
-        rightHeader="Preview & Output"
+        rightHeader="Preview"
         left={
           <>
-            <EvidenceRequestForm
-              formData={formData}
-              onChange={handleFieldChange}
-              onReset={resetForm}
-            />
-            <PreviewControls
-              settings={previewSettings}
-              onSettingsChange={updatePreviewSettings}
-            />
-          </>
-        }
-        right={
-          <div ref={previewContainerRef}>
             {/* @ts-expect-error - VA web component */}
-            <va-tabs initially-selected={0} label="Component details">
+            <va-tabs initially-selected={0} label="Editor tabs">
               {/* @ts-expect-error - VA web component */}
-              <va-tab-item button-text="Preview" target-id="panel-1" />
+              <va-tab-item button-text="Form" target-id="form-panel" />
               {/* @ts-expect-error - VA web component */}
-              <va-tab-panel panel-id="panel-1">
-                <DefaultPageAdapter
+              <va-tab-panel panel-id="form-panel">
+                <EvidenceRequestForm
                   formData={formData}
-                  settings={previewSettings}
+                  onChange={handleFieldChange}
+                  onReset={resetForm}
                 />
                 {/* @ts-expect-error - VA web component */}
               </va-tab-panel>
 
               {/* @ts-expect-error - VA web component */}
-              <va-tab-item button-text="GitHub Issue" target-id="panel-2" />
+              <va-tab-item button-text="GitHub Issue" target-id="github-panel" />
               {/* @ts-expect-error - VA web component */}
-              <va-tab-panel panel-id="panel-2">
+              <va-tab-panel panel-id="github-panel">
                 <GitHubOutput formData={formData} />
                 {/* @ts-expect-error - VA web component */}
               </va-tab-panel>
               {/* @ts-expect-error - VA web component */}
             </va-tabs>
+          </>
+        }
+        right={
+          <div ref={previewContainerRef}>
+
+            <PreviewControls
+              settings={previewSettings}
+              onSettingsChange={updatePreviewSettings}
+            />
+            <DefaultPageAdapter
+              formData={formData}
+              settings={previewSettings}
+            />
           </div>
         }
       />

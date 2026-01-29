@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Evidence Request Preview App
+
+A Next.js application for previewing and generating GitHub issues for VA evidence request improvements. Built with the [VA Design System](https://design.va.gov/).
+
+## Prerequisites
+
+- Node.js 22.17.0 (see `.nvmrc`)
+- pnpm
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+# Use correct Node version
+nvm use
+
+# Install dependencies
+pnpm install
+
+# Run the development server
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3002](http://localhost:3002) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Command | Description |
+|---------|-------------|
+| `pnpm dev` | Start development server on port 3002 |
+| `pnpm build` | Create production build |
+| `pnpm start` | Start production server |
+| `pnpm lint` | Run ESLint |
+| `pnpm sync` | Sync components from vets-website |
 
-## Learn More
+## Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
+- **Framework**: [Next.js 16](https://nextjs.org/) with App Router
+- **UI**: [VA Design System](https://design.va.gov/) (component-library, css-library)
+- **Styling**: Tailwind CSS, Sass
+- **Language**: TypeScript
+- **React**: React 19
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## VA Design System Integration
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+This project uses the VA Design System for UI components and styling:
 
-## Deploy on Vercel
+- `@department-of-veterans-affairs/component-library` - Web components and React bindings
+- `@department-of-veterans-affairs/css-library` - CSS utilities and design tokens
+- `@uswds/uswds` - USWDS fonts
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Web components are initialized in `components/WebComponentsInit.tsx`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Project Structure
+
+```
+app/                  # Next.js App Router pages and layouts
+components/           # React components
+  form/              # Form input components
+  preview/           # Preview display components
+  ui/                # Shared UI components
+hooks/               # Custom React hooks
+lib/                 # Utilities and types
+styles/              # SCSS stylesheets
+vets-website-sync/   # Scripts to sync from vets-website
+```
+
+## Known Issues
+
+- VA component library peer dependencies show warnings (library lists React 19 but sub-packages expect React 17) - components work correctly despite warnings
+- Sass deprecation warnings from VA css-library are expected (upstream issue)

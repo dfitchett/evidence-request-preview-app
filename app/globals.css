@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+/* Hide breadcrumbs in preview */
+.va-nav-breadcrumbs {
+  display: none;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -8,8 +13,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-source-sans);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,30 +26,20 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: var(--font-source-sans), 'Source Sans Pro', Roboto, Arial, sans-serif;
 }
 
-/* Claims header styling */
-.claims-header {
-  font-size: 2rem;
-  line-height: 1.3;
-  font-weight: 700;
-}
-
-.claims-header span {
-  display: block;
-  font-size: 1rem;
-  font-weight: 400;
+p {
+  font-size: 16.96px;
 }
 
 /* Bullet list styling */
 .bullet-disc {
   list-style-type: disc;
-  padding-left: 1.5rem;
 }
 
 .bullet-disc li {
-  margin-bottom: 0.5rem;
+  font-size: 16.96px;
 }
 
 /* VA Link styles */
@@ -235,7 +229,7 @@ body {
 }
 
 .two-column-panel-content {
-  padding: 1rem;
+  padding: 1rem 0;
 }
 
 /* Medium screen and up: two columns with independent scrolling */

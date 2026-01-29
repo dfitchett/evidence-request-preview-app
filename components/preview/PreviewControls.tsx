@@ -1,5 +1,9 @@
 'use client';
 
+import {
+  VaSelect,
+  VaCheckbox,
+} from '@department-of-veterans-affairs/component-library/dist/react-bindings';
 import { PreviewSettings } from '@/lib/types';
 
 interface PreviewControlsProps {
@@ -36,8 +40,7 @@ export default function PreviewControls({
           <div className="vads-u-padding--2">
             {/* View Mode Toggle */}
             <div className="vads-u-margin-bottom--2">
-              {/* @ts-expect-error - VA web component */}
-              <va-select
+              <VaSelect
                 label="Request Type"
                 name="viewMode"
                 value={settings.viewMode}
@@ -45,8 +48,7 @@ export default function PreviewControls({
               >
                 <option value="NEEDED_FROM_YOU">First-party (NEEDED_FROM_YOU)</option>
                 <option value="NEEDED_FROM_OTHERS">Third-party (NEEDED_FROM_OTHERS)</option>
-                {/* @ts-expect-error - VA web component */}
-              </va-select>
+              </VaSelect>
             </div>
 
             {/* Suspense Date (Respond By Date) */}
@@ -87,8 +89,7 @@ export default function PreviewControls({
 
             {/* Simulate Past Due */}
             <div className="vads-u-margin-bottom--0">
-              {/* @ts-expect-error - VA web component */}
-              <va-checkbox
+              <VaCheckbox
                 label="Simulate past due date"
                 checked={settings.simulatePastDue}
                 onVaChange={(e: CustomEvent) => handleSimulatePastDueChange(e.detail.checked)}

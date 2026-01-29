@@ -37,20 +37,30 @@ export const DEFAULT_ACCEPTANCE_CRITERIA: AcceptanceCriteriaItem[] = [
 ];
 
 export const INITIAL_FORM_DATA: EvidenceRequestFormData = {
-  displayName: '',
-  friendlyName: '',
-  supportAliases: [],
+  displayName: '21-4142/21-4142a',
+  friendlyName: 'Authorization to disclose information',
+  supportAliases: ['21-4142/21-4142a'],
   shortDescription: '',
-  activityDescription: '',
+  activityDescription: 'We need your permission to request your personal information from a non-VA source, like a private doctor or hospital.',
   canUploadFile: true,
   noActionNeeded: false,
   isDBQ: false,
   isProperNoun: false,
   isSensitive: false,
   noProvidePrefix: false,
-  longDescriptionContent: '',
+  longDescriptionContent: `For your benefits claim, we need your permission to request your personal information from a non-VA source, like a private doctor or hospital.
+
+Personal information may include:
+
+- Medical treatments
+- Hospitalizations
+- Psychotherapy
+- Outpatient care`,
   longDescriptionNotes: '',
-  nextStepsContent: '',
+  nextStepsContent: `Use VA Form 21-4142 to give us permission to request your personal information.
+
+You can complete and sign this form online, or use a PDF version and upload or mail it.
+[VA Form 21-4142](/find-forms/about-form-21-4142/)`,
   nextStepsNotes: '',
   additionalContext: '',
   linksResources: '',

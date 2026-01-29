@@ -5,7 +5,8 @@ import { useAppContext } from './providers';
 import { TwoColumnLayout } from '@/components/ui/TwoColumnLayout';
 import { WidthIndicator } from '@/components/ui/WidthIndicator';
 import { EvidenceRequestForm } from '@/components/form';
-import { DefaultPagePreview, PreviewControls } from '@/components/preview';
+import { PreviewControls } from '@/components/preview';
+import DefaultPageAdapter from '@/vets-website-sync/adapters/DefaultPageAdapter';
 import { GitHubOutput } from '@/components/github';
 import { EvidenceRequestFormData } from '@/lib/types';
 
@@ -54,7 +55,7 @@ export default function Home() {
               <va-tab-item button-text="Preview" target-id="panel-1" />
               {/* @ts-expect-error - VA web component */}
               <va-tab-panel panel-id="panel-1">
-                <DefaultPagePreview
+                <DefaultPageAdapter
                   formData={formData}
                   settings={previewSettings}
                 />

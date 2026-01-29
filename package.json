@@ -6,7 +6,9 @@
     "dev": "next dev --webpack -p 3002",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "sync": "./vets-website-sync/sync.sh",
+    "sync:all": "./vets-website-sync/sync.sh"
   },
   "dependencies": {
     "@department-of-veterans-affairs/component-library": "^54.5.2",

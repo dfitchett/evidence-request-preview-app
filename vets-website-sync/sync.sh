@@ -126,6 +126,46 @@ copy_and_update() {
   fi
 }
 
+# Function to apply preview-specific customizations
+# These replace production imports with mock/preview versions that work in Next.js
+apply_preview_customizations() {
+  echo ""
+  echo -e "${YELLOW}Applying preview customizations:${NC}"
+
+  # DefaultPage.jsx customizations
+  local default_page="$SYNC_DIR/components/claim-document-request-pages/DefaultPage.jsx"
+
+  if [ -f "$default_page" ]; then
+    echo -e "  ${BLUE}→${NC} Customizing DefaultPage.jsx imports for preview"
+
+    local temp_file="${default_page}.tmp"
+
+    sed -e "s|from '../../utils/helpers';|from '../../utils/helpers-preview'; // Use preview helpers that don't have platform dependencies|g" \
+        -e "s|from '../claim-files-tab/AddFilesForm';|from '../claim-files-tab/AddFilesFormMock'; // Use mock for preview|g" \
+        -e "s|from '../Type1UnknownUploadError';|from '../Type1UnknownUploadErrorMock'; // Use mock for preview|g" \
+        -e "s|from '../../utils/page';|from '../../utils/page-preview'; // Use preview page utils|g" \
+        "$default_page" > "$temp_file"
+    mv "$temp_file" "$default_page"
+
+    echo -e "${GREEN}✓${NC} Applied preview customizations to DefaultPage.jsx"
+  fi
+
+  # NeedHelp.jsx customizations
+  local need_help="$SYNC_DIR/components/NeedHelp.jsx"
+
+  if [ -f "$need_help" ]; then
+    echo -e "  ${BLUE}→${NC} Customizing NeedHelp.jsx imports for preview"
+
+    local temp_file="${need_help}.tmp"
+
+    sed -e "s|from '../utils/helpers';|from '../utils/helpers-preview';|g" \
+        "$need_help" > "$temp_file"
+    mv "$temp_file" "$need_help"
+
+    echo -e "${GREEN}✓${NC} Applied preview customizations to NeedHelp.jsx"
+  fi
+}
+
 # Sync all components
 sync_all() {
   echo "Syncing all components..."
@@ -134,7 +174,7 @@ sync_all() {
   # Main page components
   echo -e "${YELLOW}Claim document request pages:${NC}"
   copy_and_update "$VETS_WEB/components/claim-document-request-pages/DefaultPage.jsx" "$SYNC_DIR/components/claim-document-request-pages/DefaultPage.jsx" "claim-document-request-pages"
-  copy_and_update "$VETS_WEB/components/claim-document-request-pages/Default5103EvidenceNotice.jsx" "$SYNC_DIR/components/claim-document-request-pages/Default5103EvidenceNotice.jsx" "claim-document-request-pages"
+  # NOTE: Default5103EvidenceNotice.jsx is NOT synced - has custom import modifications
   echo ""
 
   # Supporting components
@@ -142,12 +182,11 @@ sync_all() {
   copy_and_update "$VETS_WEB/components/NeedHelp.jsx" "$SYNC_DIR/components/NeedHelp.jsx" "components"
   copy_and_update "$VETS_WEB/components/Notification.jsx" "$SYNC_DIR/components/Notification.jsx" "components"
   copy_and_update "$VETS_WEB/components/ClaimsBreadcrumbs.jsx" "$SYNC_DIR/components/ClaimsBreadcrumbs.jsx" "components"
-  copy_and_update "$VETS_WEB/components/Type1UnknownUploadError.jsx" "$SYNC_DIR/components/Type1UnknownUploadError.jsx" "components"
+  # NOTE: Type1UnknownUploadError.jsx is NOT synced - we use Type1UnknownUploadErrorMock.jsx instead
   echo ""
 
   # Claim files tab components
-  echo -e "${YELLOW}Claim files tab:${NC}"
-  copy_and_update "$VETS_WEB/components/claim-files-tab/AddFilesForm.jsx" "$SYNC_DIR/components/claim-files-tab/AddFilesForm.jsx" "claim-files-tab"
+  # NOTE: AddFilesForm.jsx is NOT synced - we use AddFilesFormMock.jsx instead
   echo ""
 
   # Utilities
@@ -161,6 +200,9 @@ sync_all() {
   echo -e "${YELLOW}Container (reference):${NC}"
   copy_and_update "$VETS_WEB/containers/DocumentRequestPage.jsx" "$SYNC_DIR/containers/DocumentRequestPage.jsx" "containers"
   echo ""
+
+  # Apply preview-specific customizations
+  apply_preview_customizations
 }
 
 # Sync specific component
@@ -172,18 +214,20 @@ sync_component() {
   case "$component" in
     "DefaultPage")
       copy_and_update "$VETS_WEB/components/claim-document-request-pages/DefaultPage.jsx" "$SYNC_DIR/components/claim-document-request-pages/DefaultPage.jsx" "claim-document-request-pages"
+      apply_preview_customizations
       ;;
     "Default5103EvidenceNotice")
-      copy_and_update "$VETS_WEB/components/claim-document-request-pages/Default5103EvidenceNotice.jsx" "$SYNC_DIR/components/claim-document-request-pages/Default5103EvidenceNotice.jsx" "claim-document-request-pages"
+      echo -e "${YELLOW}Skipping Default5103EvidenceNotice - has custom import modifications${NC}"
       ;;
     "NeedHelp")
       copy_and_update "$VETS_WEB/components/NeedHelp.jsx" "$SYNC_DIR/components/NeedHelp.jsx" "components"
+      apply_preview_customizations
       ;;
     "Notification")
       copy_and_update "$VETS_WEB/components/Notification.jsx" "$SYNC_DIR/components/Notification.jsx" "components"
       ;;
     "AddFilesForm")
-      copy_and_update "$VETS_WEB/components/claim-files-tab/AddFilesForm.jsx" "$SYNC_DIR/components/claim-files-tab/AddFilesForm.jsx" "claim-files-tab"
+      echo -e "${YELLOW}Skipping AddFilesForm - use AddFilesFormMock.jsx instead${NC}"
       ;;
     "helpers")
       copy_and_update "$VETS_WEB/utils/helpers.js" "$SYNC_DIR/utils/helpers.js" "utils"
@@ -198,13 +242,16 @@ sync_component() {
       echo -e "${RED}Unknown component: $component${NC}"
       echo "Available components:"
       echo "  - DefaultPage"
-      echo "  - Default5103EvidenceNotice"
       echo "  - NeedHelp"
       echo "  - Notification"
-      echo "  - AddFilesForm"
       echo "  - helpers"
       echo "  - evidenceDictionary"
       echo "  - DocumentRequestPage"
+      echo ""
+      echo "Not synced (use mock versions instead):"
+      echo "  - AddFilesForm (use AddFilesFormMock)"
+      echo "  - Default5103EvidenceNotice (custom imports)"
+      echo "  - Type1UnknownUploadError (use Type1UnknownUploadErrorMock)"
       exit 1
       ;;
   esac

@@ -2,19 +2,15 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { isBefore, parseISO } from 'date-fns';
 import { VaLink } from '@department-of-veterans-affairs/component-library/dist/react-bindings';
-// Use preview helpers that don't have platform dependencies
 import {
   formatDescription,
   buildDateFormatter,
   getDisplayFriendlyName,
-} from '../../utils/helpers-preview';
-// Use mock for preview - switch to AddFilesForm for production
-import AddFilesForm from '../claim-files-tab/AddFilesFormMock';
+} from '../../utils/helpers-preview'; // Use preview helpers that don't have platform dependencies
+import AddFilesForm from '../claim-files-tab/AddFilesFormMock'; // Use mock for preview
 import Notification from '../Notification';
-// Use mock for preview - switch to Type1UnknownUploadError for production
-import Type1UnknownUploadError from '../Type1UnknownUploadErrorMock';
-// Use preview page utils that don't have platform dependencies
-import { focusNotificationAlert } from '../../utils/page-preview';
+import Type1UnknownUploadError from '../Type1UnknownUploadErrorMock'; // Use mock for preview
+import { focusNotificationAlert } from '../../utils/page-preview'; // Use preview page utils
 import { evidenceDictionary } from '../../utils/evidenceDictionary';
 
 export default function DefaultPage({

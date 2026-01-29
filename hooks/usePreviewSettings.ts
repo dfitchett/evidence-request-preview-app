@@ -7,7 +7,6 @@ const getDefaultSettings = (): PreviewSettings => ({
   viewMode: 'NEEDED_FROM_YOU',
   suspenseDate: format(addDays(new Date(), 30), 'yyyy-MM-dd'),
   requestedDate: format(new Date(), 'yyyy-MM-dd'),
-  simulatePastDue: false,
 });
 
 export function usePreviewSettings(initialSettings?: Partial<PreviewSettings>) {

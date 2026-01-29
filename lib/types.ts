@@ -34,7 +34,6 @@ export interface PreviewSettings {
   viewMode: 'NEEDED_FROM_YOU' | 'NEEDED_FROM_OTHERS';
   suspenseDate: string;
   requestedDate: string;
-  simulatePastDue: boolean;
 }
 
 export interface TrackedItem {

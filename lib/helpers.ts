@@ -96,14 +96,9 @@ export function transformToTrackedItem(
  * Check if a suspense date is in the past.
  *
  * @param suspenseDate - The suspense date string (YYYY-MM-DD)
- * @param simulatePastDue - Whether to simulate a past due state
- * @returns True if the date is in the past or simulation is enabled
+ * @returns True if the date is in the past
  */
-export function isPastDue(
-  suspenseDate: string,
-  simulatePastDue: boolean
-): boolean {
-  if (simulatePastDue) return true;
+export function isPastDue(suspenseDate: string): boolean {
   try {
     return isBefore(parseISO(suspenseDate), new Date());
   } catch {

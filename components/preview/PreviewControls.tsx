@@ -1,8 +1,5 @@
 "use client";
 
-import {
-  VaCheckbox,
-} from "@department-of-veterans-affairs/component-library/dist/react-bindings";
 import { PreviewSettings } from "@/lib/types";
 
 interface PreviewControlsProps {
@@ -24,10 +21,6 @@ export default function PreviewControls({
 
   const handleRequestedDateChange = (requestedDate: string) => {
     onSettingsChange({ ...settings, requestedDate });
-  };
-
-  const handleSimulatePastDueChange = (simulatePastDue: boolean) => {
-    onSettingsChange({ ...settings, simulatePastDue });
   };
 
   return (
@@ -101,19 +94,6 @@ export default function PreviewControls({
                 />
               </div>
             </div>
-
-            {/* Simulate Past Due - only show for first-party */}
-            {settings.viewMode === 'NEEDED_FROM_YOU' && (
-              <div style={{ marginTop: '1rem' }}>
-                <VaCheckbox
-                  label="Simulate past due date"
-                  checked={settings.simulatePastDue}
-                  onVaChange={(e: CustomEvent) =>
-                    handleSimulatePastDueChange(e.detail.checked)
-                  }
-                />
-              </div>
-            )}
           </div>
           {/* @ts-expect-error - VA web component */}
         </va-accordion-item>

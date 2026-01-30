@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useCallback, useEffect, useRef } from 'react';
+import { SyncHashIndicator } from './SyncHashIndicator';
 
 interface TwoColumnLayoutProps {
   left: React.ReactNode;
@@ -105,6 +106,7 @@ export function TwoColumnLayout({
           Preview and generate GitHub issues for evidence request improvements
         </p>
       </header>
+      <SyncHashIndicator />
 
       {/* Two Column Content */}
       <div className="two-column-content">

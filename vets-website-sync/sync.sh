@@ -234,6 +234,8 @@ fetch_and_update() {
 }
 
 # Function to apply preview-specific customizations
+# Note: helpers.js and page.js now work directly via platform stubs in next.config.ts
+# Only AddFilesForm and Type1UnknownUploadError need mocks (complex form/Redux dependencies)
 apply_preview_customizations() {
   echo ""
   echo -e "${YELLOW}Applying preview customizations:${NC}"
@@ -246,29 +248,14 @@ apply_preview_customizations() {
 
     local temp_file="${default_page}.tmp"
 
-    sed -e "s|from '../../utils/helpers';|from '../../utils/helpers-preview'; // Use preview helpers that don't have platform dependencies|g" \
-        -e "s|from '../claim-files-tab/AddFilesForm';|from '../claim-files-tab/AddFilesFormMock'; // Use mock for preview|g" \
+    # Only mock components with complex dependencies (forms, Redux, etc.)
+    # helpers.js and page.js work via platform stubs
+    sed -e "s|from '../claim-files-tab/AddFilesForm';|from '../claim-files-tab/AddFilesFormMock'; // Use mock for preview|g" \
         -e "s|from '../Type1UnknownUploadError';|from '../Type1UnknownUploadErrorMock'; // Use mock for preview|g" \
-        -e "s|from '../../utils/page';|from '../../utils/page-preview'; // Use preview page utils|g" \
         "$default_page" > "$temp_file"
     mv "$temp_file" "$default_page"
 
     echo -e "${GREEN}✓${NC} Applied preview customizations to DefaultPage.jsx"
-  fi
-
-  # NeedHelp.jsx customizations
-  local need_help="$SYNC_DIR/components/NeedHelp.jsx"
-
-  if [ -f "$need_help" ]; then
-    echo -e "  ${BLUE}→${NC} Customizing NeedHelp.jsx imports for preview"
-
-    local temp_file="${need_help}.tmp"
-
-    sed -e "s|from '../utils/helpers';|from '../utils/helpers-preview';|g" \
-        "$need_help" > "$temp_file"
-    mv "$temp_file" "$need_help"
-
-    echo -e "${GREEN}✓${NC} Applied preview customizations to NeedHelp.jsx"
   fi
 }
 

@@ -11,7 +11,7 @@ import {
   VaCheckbox,
   VaButton,
 } from '@department-of-veterans-affairs/component-library/dist/react-bindings';
-import { buildDateFormatter } from '../../utils/helpers-preview';
+import { buildDateFormatter } from '../../utils/helpers';
 
 // Check functions for 5103 notices
 const isStandard5103Notice = displayName => {

@@ -23,6 +23,23 @@ const nextConfig: NextConfig = {
         __dirname,
         'node_modules/@uswds/uswds/dist'
       ),
+      // Platform utility stubs (replace vets-website platform dependencies)
+      '@department-of-veterans-affairs/platform-utilities/environment': path.resolve(
+        __dirname,
+        'lib/platform-stubs/environment.js'
+      ),
+      '@department-of-veterans-affairs/platform-utilities/api': path.resolve(
+        __dirname,
+        'lib/platform-stubs/api.js'
+      ),
+      '@department-of-veterans-affairs/platform-utilities/scroll': path.resolve(
+        __dirname,
+        'lib/platform-stubs/scroll.js'
+      ),
+      '@department-of-veterans-affairs/platform-utilities/data/titleCase': path.resolve(
+        __dirname,
+        'lib/platform-stubs/titleCase.js'
+      ),
     },
   },
 
@@ -39,6 +56,23 @@ const nextConfig: NextConfig = {
       '~@uswds/uswds': path.resolve(
         __dirname,
         'node_modules/@uswds/uswds/dist'
+      ),
+      // Platform utility stubs (replace vets-website platform dependencies)
+      '@department-of-veterans-affairs/platform-utilities/environment': path.resolve(
+        __dirname,
+        'lib/platform-stubs/environment.js'
+      ),
+      '@department-of-veterans-affairs/platform-utilities/api': path.resolve(
+        __dirname,
+        'lib/platform-stubs/api.js'
+      ),
+      '@department-of-veterans-affairs/platform-utilities/scroll': path.resolve(
+        __dirname,
+        'lib/platform-stubs/scroll.js'
+      ),
+      '@department-of-veterans-affairs/platform-utilities/data/titleCase': path.resolve(
+        __dirname,
+        'lib/platform-stubs/titleCase.js'
       ),
     };
 

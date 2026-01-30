@@ -30,9 +30,9 @@ export default function PreviewControls({
         {/* @ts-expect-error - VA web component */}
         <va-accordion-item header="Preview Settings">
           <div className="vads-u-padding--2">
-            <div style={{ display: 'flex', flexDirection: 'row', gap: '1rem' }}>
+            <div className="vads-u-display--flex vads-u-flex-wrap--wrap vads-u-margin-top--neg1">
               {/* View Mode Toggle */}
-              <div style={{ flex: 1 }}>
+              <div className="vads-u-flex--1 vads-u-margin-right--2 vads-u-margin-top--1 vads-u-min-width--200">
                 <label
                   htmlFor="viewMode"
                   className="vads-u-display--block vads-u-margin-bottom--1"
@@ -46,8 +46,7 @@ export default function PreviewControls({
                   onChange={(e) =>
                     handleViewModeChange(e.target.value as PreviewSettings["viewMode"])
                   }
-                  className="usa-select"
-                  style={{ width: '100%' }}
+                  className="usa-select vads-u-width--full"
                 >
                   <option value="NEEDED_FROM_YOU">
                     First-party (NEEDED_FROM_YOU)
@@ -59,7 +58,7 @@ export default function PreviewControls({
               </div>
 
               {/* Suspense Date (Respond By Date) */}
-              <div style={{ flex: 1 }}>
+              <div className="vads-u-flex--1 vads-u-margin-right--2 vads-u-margin-top--1 vads-u-min-width--200">
                 <label
                   htmlFor="suspenseDate"
                   className="vads-u-display--block vads-u-margin-bottom--1"
@@ -71,13 +70,12 @@ export default function PreviewControls({
                   id="suspenseDate"
                   value={settings.suspenseDate}
                   onChange={(e) => handleSuspenseDateChange(e.target.value)}
-                  className="usa-input"
-                  style={{ width: '100%' }}
+                  className="usa-input vads-u-width--full"
                 />
               </div>
 
               {/* Requested Date */}
-              <div style={{ flex: 1 }}>
+              <div className="vads-u-flex--1 vads-u-margin-top--1 vads-u-min-width--200">
                 <label
                   htmlFor="requestedDate"
                   className="vads-u-display--block vads-u-margin-bottom--1"
@@ -89,8 +87,7 @@ export default function PreviewControls({
                   id="requestedDate"
                   value={settings.requestedDate}
                   onChange={(e) => handleRequestedDateChange(e.target.value)}
-                  className="usa-input"
-                  style={{ width: '100%' }}
+                  className="usa-input vads-u-width--full"
                 />
               </div>
             </div>

@@ -322,3 +322,8 @@ label {
     );
   }
 }
+
+/* Custom VADS-style utility for min-width */
+.vads-u-min-width--200 {
+  min-width: 200px;
+}

@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
-import { getDisplayFriendlyName } from '../utils/helpers-preview';
+import { getDisplayFriendlyName } from '../utils/helpers';
 
 export function NeedHelp({ item }) {
   const alias =

@@ -6,11 +6,11 @@ import {
   formatDescription,
   buildDateFormatter,
   getDisplayFriendlyName,
-} from '../../utils/helpers-preview'; // Use preview helpers that don't have platform dependencies
+} from '../../utils/helpers';
 import AddFilesForm from '../claim-files-tab/AddFilesFormMock'; // Use mock for preview
 import Notification from '../Notification';
 import Type1UnknownUploadError from '../Type1UnknownUploadErrorMock'; // Use mock for preview
-import { focusNotificationAlert } from '../../utils/page-preview'; // Use preview page utils
+import { focusNotificationAlert } from '../../utils/page';
 import { evidenceDictionary } from '../../utils/evidenceDictionary';
 
 export default function DefaultPage({

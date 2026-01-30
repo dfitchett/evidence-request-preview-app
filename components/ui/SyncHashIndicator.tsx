@@ -29,7 +29,7 @@ export function SyncHashIndicator() {
   }
 
   const repoUrl = 'https://github.com/department-of-veterans-affairs/vets-website';
-  const commitUrl = `${repoUrl}/tree/${syncInfo.commitFull}`;
+  const commitUrl = `${repoUrl}/tree/${syncInfo.commitFull}/src/applications/claims-status`;
 
   return (
     <a
@@ -41,7 +41,7 @@ export function SyncHashIndicator() {
         position: 'fixed',
         top: '8px',
         right: '8px',
-        backgroundColor: 'rgba(0, 0, 0, 0.7)',
+        backgroundColor: 'rgba(200, 0, 0, 0.7)',
         color: 'white',
         padding: '4px 8px',
         borderRadius: '4px',

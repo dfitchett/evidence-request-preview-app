@@ -42,7 +42,7 @@ export function BasicInfoSection({ formData, onChange }: BasicInfoSectionProps) 
           htmlFor="friendlyName"
           className="block text-sm font-medium text-gray-700 mb-1"
         >
-          Friendly Name <span className="text-red-600">*</span>
+          Friendly Name
         </label>
         <input
           type="text"
@@ -51,7 +51,6 @@ export function BasicInfoSection({ formData, onChange }: BasicInfoSectionProps) 
           onChange={(e) => onChange('friendlyName', e.target.value)}
           className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
           placeholder="e.g., Request for Medical Records"
-          required
         />
         <p className="mt-1 text-xs text-gray-500">
           Human-readable name displayed to users

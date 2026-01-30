@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useRef } from 'react';
+import { useCallback, useMemo, useRef } from 'react';
 import { useAppContext } from './providers';
 import { TwoColumnLayout } from '@/components/ui/TwoColumnLayout';
 import { WidthIndicator } from '@/components/ui/WidthIndicator';
@@ -28,6 +28,23 @@ export default function Home() {
     },
     [setField]
   );
+
+  // Check if required fields are populated to show preview
+  const previewState = useMemo<{ canShow: boolean; message: string }>(() => {
+    if (formData.displayName.trim() === '') {
+      return {
+        canShow: false,
+        message: 'Please enter a Display Name to see preview',
+      };
+    }
+    if (formData.friendlyName.trim() === '' && formData.supportAliases.length !== 0) {
+      return {
+        canShow: false,
+        message: 'Please enter a Friendly Name when Support Aliases are provided',
+      };
+    }
+    return { canShow: true, message: '' };
+  }, [formData.displayName, formData.friendlyName, formData.supportAliases.length]);
 
   return (
     <>
@@ -63,15 +80,37 @@ export default function Home() {
         }
         right={
           <div ref={previewContainerRef}>
-
             <PreviewControls
               settings={previewSettings}
               onSettingsChange={updatePreviewSettings}
             />
-            <DefaultPageAdapter
-              formData={formData}
-              settings={previewSettings}
-            />
+            {previewState.canShow ? (
+              <DefaultPageAdapter
+                formData={formData}
+                settings={previewSettings}
+              />
+            ) : (
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  minHeight: '400px',
+                  padding: '2rem'
+                }}
+              >
+                {/* @ts-expect-error - VA web component */}
+                <va-icon
+                  icon="warning"
+                  size={3}
+                  style={{ marginBottom: '1rem' }}
+                />
+                <p style={{ textAlign: 'center', color: '#71767a', fontSize: '1.125rem' }}>
+                  {previewState.message}
+                </p>
+              </div>
+            )}
           </div>
         }
       />

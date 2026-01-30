@@ -23,9 +23,7 @@ export function CopyToClipboard({ text, className = '' }: CopyToClipboardProps) 
     <button
       onClick={handleCopy}
       className={`
-        inline-flex items-center gap-2 px-4 py-2 width-auto
-        bg-[#005ea2] text-white rounded
-        hover:bg-[#1a4480] transition-colors
+        inline-flex items-center width-auto rounded vads-u-margin--0
         disabled:opacity-50 disabled:cursor-not-allowed
         ${className}
       `}

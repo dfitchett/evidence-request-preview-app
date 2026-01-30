@@ -130,9 +130,8 @@ ${formatAcceptanceCriteria(formData.acceptanceCriteria)}`;
 }
 
 /**
- * Generate URL to create GitHub issue with pre-filled template.
- * Note: GitHub's issue template URL parameters are limited,
- * so the full body should be copied to clipboard instead.
+ * Generate URL to create a blank GitHub issue with pre-filled title.
+ * Opens a blank issue page so users can easily paste the markdown content.
  *
  * @param formData - The evidence request form data
  * @returns URL string for creating a new GitHub issue
@@ -143,9 +142,8 @@ export function generateGitHubIssueUrl(formData: EvidenceRequestFormData): strin
   );
   const baseUrl =
     'https://github.com/department-of-veterans-affairs/va.gov-team/issues/new';
-  const template = 'benefits-management-tools-improved-evidence-requests.yml';
 
-  return `${baseUrl}?template=${template}&title=${title}`;
+  return `${baseUrl}?title=${title}`;
 }
 
 /**
